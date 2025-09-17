@@ -39,20 +39,20 @@ resource "azurerm_resource_group" "name-of-new-rg" {
 }
 ```
 
-Import existing resource group if needed:
+------------------------------------------------------------------------
+
+## 3. Create a Storage Account
+
+Import resource group:
 
 ``` bash
 terraform import azurerm_resource_group.rg /subscriptions/<subscription-id>/resourceGroups/name-of-new-rg
 ```
 
-------------------------------------------------------------------------
-
-## 3. Create a Storage Account
-
 Terraform configuration:
 
 ``` hcl
-resource "azurerm_storage_account" "sa" {
+resource "azurerm_storage_account" "nameofstorageaccount" {
   name                     = "nameofstorageaccount" # Must be globally unique, lowercase, no special chars
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
