@@ -141,8 +141,7 @@ The storage account should now appear as a computer object in AD.
 
 ## 8. Provision an Azure File Server
 
-Terraform steps (simplified): 1. Create a VM (Windows Server
-recommended).\
+Using Terraform: 1. Create a VM.\
 2. Attach a data disk (e.g., `D:\Data`).\
 3. Install **Azure File Sync Agent**:\
 - [Download
