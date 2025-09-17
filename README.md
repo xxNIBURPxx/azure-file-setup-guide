@@ -27,7 +27,7 @@ az login
 Terraform configuration:
 
 ``` hcl
-resource "azurerm_resource_group" "name-of-new-rg" {
+resource "azurerm_resource_group" "rg" {
   name     = "name-of-new-rg"   # Change to your desired resource group name
   location = "West US"          # Change to your desired region
 
@@ -80,13 +80,25 @@ resource "azurerm_storage_account" "nameofstorageaccount" {
 2.  Navigate to your **Storage Account** → **Data Storage** → **File
     Shares**.\
 3.  Select **+ File Share**.\
-4.  Enter a **Name** and select **Access Tier = Hot**.\
-5.  Configure **Backup**:
-    -   Enable backup.
-    -   Assign a Recovery Services vault.
-    -   Edit the policy (name, frequency, time, timezone, and
-        retention).\
-6.  Review + Create → Validation should pass → Create.
+4.  **Configure File Share**:
+    -   **Name** the share.\
+    -   Select **Access Tier = Hot** from the drop-down menu.\
+    -   *Note:* The name of the share will serve as the root folder but
+        will not appear directly on the file server.\
+5.  **Configure Backup**:
+    -   Select **Backup**.\
+    -   Ensure **Enable Backup** is checked.\
+    -   **Name the Recovery Services Vault** (or select an existing
+        one).\
+6.  **Edit Backup Policy**:
+    -   Select **Edit Policy**.\
+    -   Update the policy **name** (e.g., `FileShareDailyBackup`).\
+    -   Modify **frequency, time, timezone, and retention** per
+        requirements.
+        -   Example: Daily at **7:30 PM UTC**, retained for **30
+            days**.\
+7.  Select **Review + Create**.\
+8.  Ensure validation passes, then select **Create**.
 
 ------------------------------------------------------------------------
 
@@ -141,7 +153,8 @@ The storage account should now appear as a computer object in AD.
 
 ## 8. Provision an Azure File Server
 
-Using Terraform: 1. Create a VM.\
+Using Terraform: 
+1. Create a VM.\
 2. Attach a data disk (e.g., `D:\Data`).\
 3. Install **Azure File Sync Agent**:\
 - [Download
