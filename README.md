@@ -27,7 +27,7 @@ az login
 Terraform configuration:
 
 ``` hcl
-resource "azurerm_resource_group" "rg" {
+resource "azurerm_resource_group" "name-of-new-rg" {
   name     = "name-of-new-rg"   # Change to your desired resource group name
   location = "West US"          # Change to your desired region
 
