@@ -136,15 +136,11 @@ Install-Module -Name AzFilesHybrid -Scope AllUsers
 
 Login and join:
 
-``` powershell
+```
 Connect-AzAccount
 
-Join-AzStorageAccount `
-  -ResourceGroupName "name-of-new-rg" `
-  -StorageAccountName "nameofstorageaccount" `
-  -Domain "domain.com" `
-  -DomainAccountType ComputerAccount `
-  -OrganizationalUnitDistinguishedName "OU=_StorageAccounts,DC=domain,DC=com"
+Join-AzStorageAccount -ResourceGroupName "name-of-new-rg" -StorageAccountName "nameofstorageaccount" -Domain "domain.com" -DomainAccountType ComputerAccount -OrganizationalUnitDistinguishedName "OU=_StorageAccounts,DC=domain,DC=com"
+
 ```
 
 The storage account should now appear as a computer object in AD.
